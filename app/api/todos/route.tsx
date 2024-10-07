@@ -20,16 +20,31 @@ export async function POST(request: Request) {
 }
 
 export async function PUT(request: Request) {
-  const { id, completed } = await request.json();
+  const { id, text, completed } = await request.json();
   if (!id) {
     return NextResponse.json({ message: "ID is required" }, { status: 400 });
   }
+
+  const dataToUpdate: { text?: string; completed?: boolean } = {};
+  if (text !== undefined) {
+    dataToUpdate.text = text;
+  }
+  if (completed !== undefined) {
+    dataToUpdate.completed = completed;
+  }
+
+  if (Object.keys(dataToUpdate).length === 0) {
+    return NextResponse.json({ message: "No valid fields to update" }, { status: 400 });
+  }
+
   const updatedTodo = await prisma.todo.update({
     where: { id: Number(id) },
-    data: { completed }
+    data: dataToUpdate,
   });
+
   return NextResponse.json(updatedTodo);
 }
+
 
 export async function DELETE(request: Request) {
   const { id } = await request.json();

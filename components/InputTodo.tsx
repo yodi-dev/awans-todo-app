@@ -1,4 +1,3 @@
-// components/TodoInput.tsx
 "use client";
 
 import { useState } from "react";
@@ -18,19 +17,20 @@ export default function TodoInput({ onAddTodo }: TodoInputProps) {
   };
 
   return (
-    <div className="flex mb-4">
+    <div className="flex mb-4 relative z-10">
       <input
         type="text"
         value={newTodo}
         onChange={(e) => setNewTodo(e.target.value)}
-        className="border p-2 rounded mr-2"
-        placeholder="Add new todo"
+        className="border text-black p-2 rounded mr-2"
+        placeholder="Add new to-do"
       />
+      
       <button
         onClick={handleAdd}
-        className="bg-blue-500 text-white px-4 py-2 rounded"
+        className="bg-bgcolor text-white px-4 py-2 rounded"
       >
-        Add Todo
+        Add
       </button>
     </div>
   );
