@@ -2,6 +2,8 @@
 
 A simple and modern To-Do List application built using Next.js 13, TypeScript, Tailwind CSS, Prisma, and PostgreSQL. This app allows users to create, update, and delete tasks, with the added feature that completed tasks cannot be edited.
 
+link to app - https://awans-todo-app.vercel.app/
+
 ## 🚀 Features
 
 - Add New Tasks: Create new tasks with ease.
