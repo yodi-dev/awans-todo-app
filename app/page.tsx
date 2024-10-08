@@ -66,37 +66,37 @@ export default function Home() {
   };
 
   const editTodo = async (id: number, newText: string) => {
-  try {
-    const res = await fetch("/api/todos", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id, text: newText }),
-    });
+    try {
+      const res = await fetch("/api/todos", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id, text: newText }),
+      });
 
-    if (!res.ok) {
-      console.error("Failed to update todo");
-      return;
+      if (!res.ok) {
+        console.error("Failed to update todo");
+        return;
+      }
+
+      const updatedTodo = await res.json();
+      setTodos((prev) =>
+        prev.map((todo) => (todo.id === id ? updatedTodo : todo))
+      );
+    } catch (error) {
+      console.error("Error updating todo:", error);
     }
-
-    const updatedTodo = await res.json();
-    setTodos((prev) =>
-      prev.map((todo) => (todo.id === id ? updatedTodo : todo))
-    );
-  } catch (error) {
-    console.error("Error updating todo:", error);
-  }
-};
+  };
 
   return (
-    <div className="flex flex-col items-center mt-10">
+    <div className="relative w-full h-screen flex flex-col items-center pt-10">
       <Image 
         src="/bg.jpg" 
         alt="Background"
-        layout="fill" 
-        objectFit="cover"
-        objectPosition="center left" 
+        fill
+        priority={true}
+        style={{ objectFit: "cover", objectPosition: "center left" }}
         className="absolute inset-0 z-0"
       />
       
@@ -104,10 +104,15 @@ export default function Home() {
 
       <TodoInput onAddTodo={addTodo} />
 
-      <TodoList todos={todos} onToggleTodo={toggleTodo} onDeleteTodo={deleteTodo} onEditTodo={editTodo} />
+      <TodoList 
+        todos={todos} 
+        onToggleTodo={toggleTodo} 
+        onDeleteTodo={deleteTodo} 
+        onEditTodo={editTodo} 
+      />
 
-      <footer className="fixed bottom-5 right-5 text-white p-3 rounded shadow-xl text-xs absolute z-10">
-        To edit an item, click on the item text that you want.
+      <footer className="fixed bottom-5 right-0 text-white p-3 rounded-md shadow-xl text-xs absolute z-10">
+        To edit an item, click on the item text that you wish to edit.
       </footer>
     </div>
   );

@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📋 Awans to-do
 
-## Getting Started
+A simple and modern To-Do List application built using Next.js 13, TypeScript, Tailwind CSS, Prisma, and PostgreSQL. This app allows users to create, update, and delete tasks, with the added feature that completed tasks cannot be edited.
 
-First, run the development server:
+## 🚀 Features
+
+- Add New Tasks: Create new tasks with ease.
+- Mark Tasks as Completed: Tasks can be marked as completed, and once completed, they cannot be edited.
+- Edit Tasks: Edit tasks while they are not marked as complete.
+- Delete Tasks: Remove tasks when they are no longer needed.
+- Responsive Design: The app is fully responsive and works seamlessly across all devices.
+- Powered by Prisma & PostgreSQL: Data persistence using Prisma as the ORM and PostgreSQL as the database.
+
+## 🛠️ Tech Stack
+
+- Next.js 13 - The React framework for production.
+- TypeScript - Static type definitions for JavaScript.
+- Tailwind CSS - Utility-first CSS framework for building custom designs.
+- Prisma - Next-generation ORM for Node.js and TypeScript.
+- PostgreSQL - Open-source relational database.
+
+## 🔧 Installation
+
+1. Clone my repo
+
+```bash
+git clone https://github.com/yourusername/todo-app.git
+cd todo-app
+```
+
+2. Install Dependencies
+
+```bash
+npm install
+```
+
+3. Set up db
+
+- Create a PostgreSQL database locally or use a cloud service like Heroku or Supabase.
+- Configure the database connection string in the .env file:
+
+```bash
+DATABASE_URL="postgresql://user:password@localhost:5432/mydatabase"
+```
+
+4. Run Prisma migrations to create the required tables
+
+```bash
+npx prisma migrate dev
+```
+
+5. Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📋 API Endpoints
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- GET /api/todos: Retrieve all to-do items.
+- POST /api/todos: Create a new to-do item.
+- PUT /api/todos: Update the status of a to-do item (e.g., mark as completed).
+- DELETE /api/todos: Delete a to-do item.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛡️ License
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the [LICENSE](https://choosealicense.com/licenses/mit/) file for details.
